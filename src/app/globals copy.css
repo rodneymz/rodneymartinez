@@ -1,0 +1,61 @@
+/* ----------------------------------------
+   Semantic Typography — @layer base
+---------------------------------------- */
+@layer base {
+  body {
+    font-family: var(--font-body);
+    font-size: var(--p-font-size);
+    line-height: var(--p-line-height);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-default);
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: var(--h1-font-size);
+    line-height: var(--h1-line-height);
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--h2-font-size);
+    line-height: var(--h2-line-height);
+    font-weight: 400;
+  }
+
+  h3 {
+    font-family: var(--font-heading);
+    font-size: var(--h3-font-size);
+    line-height: var(--h3-line-height);
+    font-weight: 400;
+  }
+
+  h4 {
+    font-family: var(--font-heading);
+    font-size: var(--h4-font-size);
+    line-height: var(--h4-line-height);
+    font-weight: 400;
+  }
+
+  p {
+    font-family: var(--font-body);
+    font-size: var(--p-font-size);
+    line-height: var(--p-line-height);
+    font-weight: 400;
+  }
+
+  small {
+    font-size: var(--small-font-size);
+    line-height: var(--small-line-height);
+    color: var(--color-text-muted, #6b7280);
+  }
+
+  button {
+    font-family: var(--font-body);
+    font-size: var(--btn-font-size);
+    letter-spacing: var(--btn-letter-spacing);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+}
