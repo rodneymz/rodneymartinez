@@ -1,17 +1,20 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-
-import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/shadcn/menubar";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export function MenuNavBar() {
   const router = useRouter();
   return (
-    <Menubar>
-      <MenubarMenu>
-        <MenubarTrigger onClick={() => router.push("/")}>Home</MenubarTrigger>
-        <MenubarTrigger onClick={() => router.push("/blog")}>Blog</MenubarTrigger>
-      </MenubarMenu>
-    </Menubar>
+    <nav>
+      <ul className="flex space-x-4 *:hover:text-blue-500 *:hover:underline *:hover:underline-offset-2">
+        <Link href="/">
+          <li>Home</li>
+        </Link>
+        <Link href="/blog">
+          <li>Blog</li>
+        </Link>
+      </ul>
+    </nav>
   );
 }

@@ -1,31 +1,42 @@
-// src/components/Post.tsx
-import { PortableText } from "@portabletext/react";
+import { PortableText } from 'next-sanity';
+import Image from 'next/image';
 
-import Image from "next/image";
-import Link from "next/link";
+import { Author } from '@/components/custom/Author';
+import { Categories } from '@/components/custom/Categories';
+import { PublishedAt } from '@/components/custom/PublishedAt';
+import { Title } from '@/components/custom/Title';
+import { urlFor } from '@/sanity/lib/image';
+import { components } from '@/sanity/portableTextComponents';
+import { POST_QUERYResult } from '@/sanity/types';
 
-import { urlFor } from "@/sanity/lib/image";
-
-import { POST_QUERYResult } from "../../../sanity.types";
-
-export function Post({ post }: { post: POST_QUERYResult }) {
-  const { title, mainImage, body } = post || {};
+export function Post(props: NonNullable<POST_QUERYResult>) {
+  const { title, author, mainImage, body, publishedAt, categories } = props;
 
   return (
-    <main className="prose prose-lg container mx-auto p-4">
-      {title ? <h1>{title}</h1> : null}
-      {mainImage?.asset?._ref ? (
-        <Image
-          className="float-left m-0 mr-4 w-1/3 rounded-lg"
-          src={urlFor(mainImage?.asset?._ref).width(300).height(300).url()}
-          width={300}
-          height={300}
-          alt={title || ""}
-        />
+    <article className="grid gap-y-12 lg:grid-cols-12">
+      <header className="flex flex-col items-start gap-4 lg:col-span-12">
+        <div className="flex items-center gap-4">
+          <Categories categories={categories} />
+          <PublishedAt publishedAt={publishedAt} />
+        </div>
+        <Title>{title}</Title>
+        <Author author={author} />
+      </header>
+      {mainImage ? (
+        <figure className="flex flex-col items-start gap-2 lg:col-span-4">
+          <Image
+            src={urlFor(mainImage).width(400).height(400).url()}
+            width={400}
+            height={400}
+            alt=""
+          />
+        </figure>
       ) : null}
-      {body ? <PortableText value={body} /> : null}
-      <hr />
-      <Link href="/blog">&larr; Return to blog</Link>
-    </main>
+      {body ? (
+        <div className="prose lg:prose-lg lg:col-span-7 lg:col-start-6">
+          <PortableText value={body} components={components} />
+        </div>
+      ) : null}
+    </article>
   );
 }

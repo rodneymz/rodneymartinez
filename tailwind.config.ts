@@ -1,11 +1,15 @@
 // tailwind.config.ts
+import typography from '@tailwindcss/typography';
 
-import type { Config } from "tailwindcss";
-import typography from "@tailwindcss/typography";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  // ...other settings
-  plugins: [typography],
-}
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
+  ],
+  plugins: [typography]
+};
 
 export default config;

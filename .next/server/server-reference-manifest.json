@@ -2,11 +2,7 @@
   "node": {
     "7f21662f241e643aa22acca58b95dd42163ab61381": {
       "workers": {
-        "app/blog/[slug]/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        },
-        "app/blog/page": {
+        "app/_not-found/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         },
@@ -14,25 +10,20 @@
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         },
-        "app/_not-found/page": {
+        "app/blog/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },
       "layer": {
-        "app/blog/[slug]/page": "action-browser",
-        "app/blog/page": "action-browser",
+        "app/_not-found/page": "action-browser",
         "app/page": "action-browser",
-        "app/_not-found/page": "action-browser"
+        "app/blog/page": "action-browser"
       }
     },
     "7f7472d1f558341aff5b927db05457d4f7b2010eb1": {
       "workers": {
-        "app/blog/[slug]/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        },
-        "app/blog/page": {
+        "app/_not-found/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         },
@@ -40,25 +31,20 @@
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         },
-        "app/_not-found/page": {
+        "app/blog/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },
       "layer": {
-        "app/blog/[slug]/page": "action-browser",
-        "app/blog/page": "action-browser",
+        "app/_not-found/page": "action-browser",
         "app/page": "action-browser",
-        "app/_not-found/page": "action-browser"
+        "app/blog/page": "action-browser"
       }
     },
     "7f930a06051875d36cd20069e2e19f86f2c6673e23": {
       "workers": {
-        "app/blog/[slug]/page": {
-          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
-          "async": false
-        },
-        "app/blog/page": {
+        "app/_not-found/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         },
@@ -66,16 +52,15 @@
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         },
-        "app/_not-found/page": {
+        "app/blog/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2F%40sanity%2Fnext-loader%2Fdist%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f21662f241e643aa22acca58b95dd42163ab61381%22%2C%22exportedName%22%3A%22setPerspectiveCookie%22%7D%2C%7B%22id%22%3A%227f7472d1f558341aff5b927db05457d4f7b2010eb1%22%2C%22exportedName%22%3A%22revalidateSyncTags%22%7D%5D%5D%2C%5B%22%2FUsers%2Frodneym%2FDesktop%2Fprojects%2Frodneymartinez%2Fnode_modules%2Fnext-sanity%2Fdist%2Fvisual-editing%2Fserver-actions.js%22%2C%5B%7B%22id%22%3A%227f930a06051875d36cd20069e2e19f86f2c6673e23%22%2C%22exportedName%22%3A%22revalidateRootLayout%22%7D%5D%5D%5D&__client_imported__=true!",
           "async": false
         }
       },
       "layer": {
-        "app/blog/[slug]/page": "action-browser",
-        "app/blog/page": "action-browser",
+        "app/_not-found/page": "action-browser",
         "app/page": "action-browser",
-        "app/_not-found/page": "action-browser"
+        "app/blog/page": "action-browser"
       }
     }
   },

@@ -1,5 +1,3 @@
-import { ProjectsData } from './ProjectsData'
+import { ProjectsData } from './ProjectsData';
 
-export {
-    ProjectsData
-}
+export { ProjectsData };

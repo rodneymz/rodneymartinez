@@ -1,8 +1,8 @@
-import Container from "@material-ui/core/Container";
+import Container from '@material-ui/core/Container';
 
-import React from "react";
+import React from 'react';
 
-import { Footer, Header } from ".";
+import { Footer, Header } from '.';
 
 export default function Layout(props) {
   return (

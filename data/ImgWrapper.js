@@ -1,19 +1,18 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
+import React from 'react';
+
 // Styles
-const useStyles = makeStyles(theme => ({
-    image: {
-        width: "100%",
-        height: "auto",
-        objectFit: "cover"
-    },
+const useStyles = makeStyles((theme) => ({
+  image: {
+    width: '100%',
+    height: 'auto',
+    objectFit: 'cover'
+  }
 }));
 
 export const ImgWrapper = (props) => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <img src={props.src} alt={props.alt} className={classes.image} />
-    );
-}
+  return <img src={props.src} alt={props.alt} className={classes.image} />;
+};
