@@ -22,9 +22,10 @@ export default function HomePage() {
       <main className="px-8 py-24 pt-38">
         <div className="mx-auto max-w-4xl">
           <h2 className="mb-6 text-4xl font-bold md:text-5xl">
-            Designing seamless digital experiences for finance & beyond
+           
           </h2>
           <p className="mb-8 text-lg md:text-xl">
+             Designing seamless digital experiences for finance & beyond
             I'm a product designer that is passionate about designing better financial applications.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">

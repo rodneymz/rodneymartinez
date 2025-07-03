@@ -1,0 +1,18 @@
+schema: 'https://us-west-2.cdn.hygraph.com/content/cmclydf9n00je06w62jyrx5hj/master'
+documents: 'lib/graphql/**/*.graphql'
+generates:
+  lib/graphql/schema.json:
+    plugins:
+      - introspection
+  lib/graphql/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+    config:
+      avoidOptionals: false
+      scalars:
+        Date: string
+        DateTime: string
+        RGBAHue: string
+        RGBATransparency: string
+        Hex: string

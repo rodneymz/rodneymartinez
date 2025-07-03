@@ -1,0 +1,19 @@
+query GetPosts($first: Int, $skip: Int) {
+  posts(first: $first, skip: $skip, orderBy: publishedAt_DESC) {
+    id
+    title
+    stage
+    slug
+    publishedAt
+  }
+}
+
+query GetPostBySlug($slug: String!) {
+  post(where: { slug: $slug }) {
+    id
+    title
+    stage
+    slug
+    publishedAt
+  }
+}
