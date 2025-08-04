@@ -1,7 +1,0 @@
-.storybook
-node_modules
-.next
-out
-public
-build
-coverage
