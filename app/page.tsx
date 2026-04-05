@@ -13,13 +13,7 @@ import {
 import Link from 'next/link'
 import { AnimatedBackground } from 'motion-primitives/animated-background'
 import useSWR from 'swr'
-import {
-  PROJECTS,
-  WORK_EXPERIENCE,
-  BLOG_POSTS,
-  EMAIL,
-  SOCIAL_LINKS,
-} from './data'
+import { ABOUT, PROJECTS, WORK_EXPERIENCE, EMAIL, SOCIAL_LINKS } from './data'
 
 type Post = {
   id: string
@@ -135,6 +129,7 @@ function MagneticSocialLink({
 
 export default function Personal() {
   const { data: posts } = useSWR<Post[]>('/api/posts', fetcher)
+  const { headline, about } = ABOUT
 
   return (
     <motion.main
@@ -143,6 +138,19 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <div className="flex-1">
+          <p className="text-zinc-600 dark:text-zinc-400">
+            {headline}
+            <br></br>
+            <br></br>
+            {about}
+          </p>
+        </div>
+      </motion.section>
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
@@ -216,31 +224,33 @@ export default function Personal() {
       >
         <h3 className="mb-3 text-lg font-medium">Blog</h3>
         <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {(posts || []).map((post) => (
-              <Link
-                key={post.id}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={`/blog/${post.slug}`}
-                data-id={post.id}
-              >
-                <div className="flex flex-col space-y-2">
-                  <h4 className="font-bold">{post.title}</h4>
-                  <p className="text-zinc-500 dark:text-zinc-500">
-                    {post.desc}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
+          {posts && posts.length > 0 && (
+            <AnimatedBackground
+              enableHover
+              className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
+              transition={{
+                type: 'spring',
+                bounce: 0,
+                duration: 0.2,
+              }}
+            >
+              {posts.map((post) => (
+                <Link
+                  key={post.id}
+                  className="-mx-3 rounded-xl px-3 py-3"
+                  href={`/blog/${post.slug}`}
+                  data-id={post.id}
+                >
+                  <div className="flex flex-col space-y-2">
+                    <h4 className="font-bold">{post.title}</h4>
+                    <p className="text-zinc-500 dark:text-zinc-500">
+                      {post.desc}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </AnimatedBackground>
+          )}
         </div>
       </motion.section>
 

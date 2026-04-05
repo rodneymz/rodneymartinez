@@ -1,3 +1,8 @@
+type About = {
+  headline: string
+  about: string
+}
+
 type Project = {
   name: string
   description: string
@@ -25,6 +30,13 @@ type BlogPost = {
 type SocialLink = {
   label: string
   link: string
+}
+
+export const ABOUT: About = {
+  headline:
+    'Marketing Strategist | Driving Engagement Through Data-Driven Campaigns',
+  about:
+    'Senior Product Designer with 8 years of experience building B2C fintech applications in the retirement investment space — products that demand a deep understanding of complex financial vehicles, assets, and operational processes. I specialize in bridging the gap between user experience and product development: applying deductive reasoning, user-centered thinking, and hands-on front-end development (HTML, CSS, JavaScript, React) to design products that meet both client and business expectations. I believe in using empirical data to validate product outcomes, and balance that rigor with the ability to move quickly and get products to market.',
 }
 
 export const PROJECTS: Project[] = [

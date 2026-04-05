@@ -29,6 +29,9 @@ archive/.next/**
 # misc
 .DS_Store
 *.pem
+*.code-workspace
+
+package-lock.json
 
 # debug
 npm-debug.log*
