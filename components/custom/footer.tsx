@@ -69,9 +69,9 @@ function ThemeSwitch() {
 export function Footer() {
   return (
     <footer className="mx-auto mt-24 w-full justify-center border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
-      <div className="flex w-100 max-w-screen-2xl justify-between">
+      <div className="flex w-full max-w-screen-2xl justify-between">
         <div className="flex-col">
-          <div className="text-xs text-zinc-500">© 2025 Rodney Martinez</div>
+          <div className="text-xs text-zinc-500">© 2026 Rodney Martinez</div>
           <div className="text-xs text-zinc-500">
             Built with{' '}
             <TextLoop>

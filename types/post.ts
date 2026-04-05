@@ -5,9 +5,9 @@ export interface Post {
   stage: string
   slug: string
   publishedAt: string
-  content?: Array<{
+  content?: {
     content: {
       text: string
     }
-  }>
+  }
 }

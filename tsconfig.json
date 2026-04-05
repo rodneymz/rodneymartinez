@@ -20,10 +20,14 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "api/*": ["./app/api/*"],
       "custom/*": ["./components/custom/*"],
+      "data": ["./app/data.ts"],
       "motion-primitives/*": ["./components/motion-primitives/*"],
       "shad-ui/*": ["./components/shad-ui/*"],
-      "types/*": ["./types/"]
+      "types": ["./types"],
+      "types/*": ["./types/*"],
+      "utils": ["./lib/utils.ts"]
     }
   },
   "include": [

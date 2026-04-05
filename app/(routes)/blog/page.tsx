@@ -1,4 +1,8 @@
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { getPosts } from 'api/shared/functions'
+import type { PostsResponse } from 'api/types'
+import { formatDate } from 'utils'
 
 const blogPosts = [
   {
@@ -15,25 +19,43 @@ const blogPosts = [
   },
 ]
 
-export default function BlogIndex() {
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Blog</h1>
-        <div className="space-y-8">
-          {blogPosts.map((post) => (
-            <article key={post.slug} className="border-b border-gray-200 pb-8">
-              <Link href={`/blog/${post.slug}`} className="block">
-                <h2 className="text-2xl font-semibold mb-2 hover:text-blue-600 transition-colors">
-                  {post.title}
-                </h2>
-                <p className="text-gray-600 mb-2">{post.description}</p>
-                <time className="text-sm text-gray-500">{post.date}</time>
-              </Link>
-            </article>
-          ))}
+export default async function BlogIndex() {
+  try {
+    const posts: PostsResponse['posts'] = await getPosts()
+
+    if (!posts) {
+      notFound()
+    }
+    return (
+      <div className="container mx-auto">
+        <div className="mx-auto max-w-4xl">
+          <h1 className="mb-8 text-4xl font-bold">Blog</h1>
+          <div className="space-y-8">
+            {posts.map((post) => (
+              <article
+                key={post.slug}
+                className="border-b border-gray-200 pb-8"
+              >
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="block no-underline"
+                >
+                  <h2 className="mb-2 text-2xl font-semibold">{post.title}</h2>
+                  <p className="text-muted-foreground mb-2 line-clamp-2">
+                    {post.desc}
+                  </p>
+                  <time className="text-muted-foreground text-sm">
+                    {formatDate(post.publishedAt)}
+                  </time>
+                </Link>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  } catch (error) {
+    console.error('Error fetching post:', error)
+    notFound()
+  }
 }

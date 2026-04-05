@@ -1,6 +1,6 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 @plugin '@tailwindcss/typography';
 @custom-variant dark (&:is(.dark *));
 
@@ -28,6 +28,9 @@
   }
   html {
     @apply font-sans;
+  }
+  .prose p {
+    font-weight: 400;
   }
 }
 

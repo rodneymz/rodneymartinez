@@ -88,13 +88,11 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    label: 'Github',
-    link: 'https://github.com/rodneymz',
+    label: 'Email',
+    link: 'mailto:your@email.com',
   },
   {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/rodneyamartinez/',
   },
 ]
-
-export const EMAIL = 'your@email.com'
