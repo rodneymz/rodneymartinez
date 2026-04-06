@@ -1,9 +1,11 @@
 'use client'
+import { useEffect, useState } from 'react'
+
+import { useTheme } from 'next-themes'
+
+import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { AnimatedBackground } from 'motion-primitives/animated-background'
 import { TextLoop } from 'motion-primitives/text-loop'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 
 const THEMES_OPTIONS = [
   {

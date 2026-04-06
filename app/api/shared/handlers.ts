@@ -1,5 +1,9 @@
-import { getPosts, getPost, getProjects, getProject } from './functions'
-import { createApiResponse, createErrorResponse, handleApiError } from './graphql-client'
+import { getPost, getPosts, getProject, getProjects } from './functions'
+import {
+  createApiResponse,
+  createErrorResponse,
+  handleApiError,
+} from './graphql-client'
 
 // Posts route handlers
 export async function handleGetPosts(request: Request) {
@@ -26,7 +30,7 @@ export async function handleGetPost(slug: string) {
     }
 
     const post = await getPost(slug)
-    
+
     if (!post) {
       return createErrorResponse('Post not found', undefined, 404)
     }
@@ -62,7 +66,7 @@ export async function handleGetProject(slug: string) {
     }
 
     const project = await getProject(slug)
-    
+
     if (!project) {
       return createErrorResponse('Project not found', undefined, 404)
     }

@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+
 import { getPosts } from 'api/shared/functions'
-import type { PostsResponse } from 'api/types'
 import { formatDate } from 'utils'
+
+import type { PostsResponse } from 'api/types'
 
 const blogPosts = [
   {

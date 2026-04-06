@@ -1,14 +1,21 @@
-import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, DM_Sans, Raleway } from 'next/font/google'
-import './globals.css'
-import { Header } from 'custom/header'
-import { Footer } from 'custom/footer'
+import { DM_Sans, Geist, Geist_Mono, Raleway } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
-import { cn } from "@/lib/utils";
 
-const ralewayHeading = Raleway({subsets:['latin'],variable:'--font-heading'});
+import { Footer } from 'custom/footer'
+import { Header } from 'custom/header'
 
-const dmSans = DM_Sans({subsets:['latin'],variable:'--font-sans'});
+import { cn } from '@/lib/utils'
+
+import type { Metadata, Viewport } from 'next'
+
+import './globals.css'
+
+const ralewayHeading = Raleway({
+  subsets: ['latin'],
+  variable: '--font-heading',
+})
+
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-sans' })
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -44,7 +51,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", dmSans.variable, ralewayHeading.variable)}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn('font-sans', dmSans.variable, ralewayHeading.variable)}
+    >
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >

@@ -1,10 +1,14 @@
-import { notFound } from 'next/navigation'
-import { getPost } from '../../../api/shared/functions'
-import type { PostResponse } from 'api/types'
-import { formatDate } from 'utils'
-import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
+
 import { ArrowLeft } from 'lucide-react'
+import { formatDate } from 'utils'
+
+import { Button } from '@/components/ui/button'
+
+import { getPost } from '../../../api/shared/functions'
+
+import type { PostResponse } from 'api/types'
 
 interface BlogPostProps {
   params: Promise<{

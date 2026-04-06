@@ -32,10 +32,7 @@ export async function graphqlRequest<T>(
   return json.data
 }
 
-export function createApiResponse<T>(
-  data: T,
-  status: number = 200
-): Response {
+export function createApiResponse<T>(data: T, status: number = 200): Response {
   return Response.json(data, { status })
 }
 
@@ -44,10 +41,7 @@ export function createErrorResponse(
   details?: string,
   status: number = 500
 ): Response {
-  return Response.json(
-    { error: message, details },
-    { status }
-  )
+  return Response.json({ error: message, details }, { status })
 }
 
 export function handleApiError(error: unknown): Response {

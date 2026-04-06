@@ -1,10 +1,11 @@
 import { graphqlRequest } from './graphql-client'
-import type { Post, Project } from 'types'
+
 import type {
+  PaginationOptions,
   PostsResponse,
   ProjectsResponse,
-  PaginationOptions,
 } from '../types'
+import type { Post, Project } from 'types'
 
 // Posts functions
 export async function getPosts(options: PaginationOptions = {}) {

@@ -1,20 +1,23 @@
 'use client'
+import Link from 'next/link'
+
+import { ArrowRight, XIcon } from 'lucide-react'
 import { motion } from 'motion/react'
-import { XIcon, ArrowRight } from 'lucide-react'
-import { Spotlight } from 'motion-primitives/spotlight'
+import { AnimatedBackground } from 'motion-primitives/animated-background'
 import { Magnetic } from 'motion-primitives/magnetic'
 import {
   MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
   MorphingDialogClose,
   MorphingDialogContainer,
+  MorphingDialogContent,
+  MorphingDialogTrigger,
 } from 'motion-primitives/morphing-dialog'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { AnimatedBackground } from 'motion-primitives/animated-background'
+import { Spotlight } from 'motion-primitives/spotlight'
 import useSWR from 'swr'
-import { ABOUT, PROJECTS, WORK_EXPERIENCE, SOCIAL_LINKS } from './data'
+
+import { Button } from '@/components/ui/button'
+
+import { ABOUT, PROJECTS, SOCIAL_LINKS, WORK_EXPERIENCE } from './data'
 
 type Post = {
   id: string

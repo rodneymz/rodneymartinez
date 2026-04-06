@@ -1,9 +1,11 @@
 'use client'
-import { TextEffect } from 'motion-primitives/text-effect'
 import Link from 'next/link'
-import { Button } from '../ui/button'
+
+import { ABOUT, EMAIL } from 'data'
 import { Menu } from 'lucide-react'
-import { EMAIL, ABOUT } from 'data'
+import { TextEffect } from 'motion-primitives/text-effect'
+
+import { Button } from '../ui/button'
 
 export function Header() {
   return (
