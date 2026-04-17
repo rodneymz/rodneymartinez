@@ -30,6 +30,7 @@ archive/.next/**
 .DS_Store
 *.pem
 *.code-workspace
+*.mcp.json
 
 package-lock.json
 

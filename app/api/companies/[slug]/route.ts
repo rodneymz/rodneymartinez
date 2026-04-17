@@ -1,9 +1,9 @@
-import { handleGetProject } from '../../shared/handlers'
+import { handleGetCompany } from '../../shared/handlers'
 
 export async function GET(
-  request: Request,
+  _request: Request,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params
-  return handleGetProject(slug)
+  return handleGetCompany(slug)
 }

@@ -1,13 +1,21 @@
 'use client'
 import Link from 'next/link'
 
-import { ABOUT, EMAIL } from 'data'
-import { Menu } from 'lucide-react'
 import { TextEffect } from 'motion-primitives/text-effect'
+import useSWR from 'swr'
 
 import { Button } from '../ui/button'
 
+import type { About, SocialLink } from 'types'
+
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
 export function Header() {
+  const { data: about } = useSWR<About>('/api/about', fetcher)
+  const { data: socialLinks } = useSWR<SocialLink[]>('/api/social-links', fetcher)
+
+  const emailLink = socialLinks?.find((l) => l.icon === 'EMAIL')
+
   return (
     <header className="mb-24 flex items-center justify-between">
       <div>
@@ -20,13 +28,16 @@ export function Header() {
           per="char"
           className="text-muted-foreground text-sm"
           delay={0.5}
+          key={about?.headline ?? ''}
         >
-          {`${ABOUT.headline}`}
+          {about?.headline ?? ''}
         </TextEffect>
       </div>
-      <Button>
-        <a href={`mailto:${EMAIL}`}>Contact</a>
-      </Button>
+      {emailLink && (
+        <Button>
+          <a href={`mailto:${emailLink.url}`}>Contact</a>
+        </Button>
+      )}
     </header>
   )
 }

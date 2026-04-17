@@ -1,13 +1,21 @@
+import type { PublishStatus } from './enums'
+import type { RichText } from './rich-text'
+import type { Tag } from './tag'
+
 export interface Post {
   id: string
   title: string
-  desc: string
-  stage: string
   slug: string
-  publishedAt: string
+  desc?: string
+  stage: string
+  publishDate?: string
+  publishedAt?: string
+  canonicalUrl?: string
+  externalId?: string
+  externalUrl?: string
+  externalPublishStatus: PublishStatus
   content?: {
-    content: {
-      text: string
-    }
+    content: RichText
   }
+  tags?: Tag[]
 }

@@ -1,3 +1,11 @@
 // Core domain types
+export type { About } from './about'
+export type { Asset } from './asset'
+export type { Company } from './company'
+export type { EmploymentType, PublishStatus, SocialIcon } from './enums'
+export type { Portfolio } from './portfolio'
 export type { Post } from './post'
-export type { Project } from './project'
+export type { RichText } from './rich-text'
+export type { Role } from './role'
+export type { SocialLink } from './social-link'
+export type { Tag } from './tag'

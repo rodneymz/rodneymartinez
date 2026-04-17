@@ -1,7 +1,7 @@
 'use client'
 import { ScrollProgress } from 'motion-primitives/scroll-progress'
 
-export default function WorkLayout({
+export default function WorkExperienceLayout({
   children,
 }: {
   children: React.ReactNode

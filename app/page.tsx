@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { ArrowRight, XIcon } from 'lucide-react'
@@ -16,15 +17,9 @@ import { Spotlight } from 'motion-primitives/spotlight'
 import useSWR from 'swr'
 
 import { Button } from '@/components/ui/button'
+import { formatWorkDate } from 'utils'
 
-import { ABOUT, PROJECTS, SOCIAL_LINKS, WORK_EXPERIENCE } from './data'
-
-type Post = {
-  id: string
-  title: string
-  slug: string
-  desc: string
-}
+import type { About, Company, Portfolio, Post, SocialLink } from 'types'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -47,11 +42,14 @@ const TRANSITION_SECTION = {
   duration: 0.3,
 }
 
-type ProjectVideoProps = {
+type PortfolioImageProps = {
   src: string
+  alt: string
+  width: number
+  height: number
 }
 
-function ProjectVideo({ src }: ProjectVideoProps) {
+function PortfolioImage({ src, alt, width, height }: PortfolioImageProps) {
   return (
     <MorphingDialog
       transition={{
@@ -61,22 +59,22 @@ function ProjectVideo({ src }: ProjectVideoProps) {
       }}
     >
       <MorphingDialogTrigger>
-        <video
+        <Image
           src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
+          alt={alt}
+          width={width}
+          height={height}
+          className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
         />
       </MorphingDialogTrigger>
       <MorphingDialogContainer>
         <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
+          <Image
             src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
+            alt={alt}
+            width={width}
+            height={height}
+            className="aspect-video h-[50vh] w-full rounded-xl object-cover md:h-[70vh]"
           />
         </MorphingDialogContent>
         <MorphingDialogClose
@@ -132,9 +130,16 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const { data: about } = useSWR<About>('/api/about', fetcher)
+  const { data: portfolios } = useSWR<Portfolio[]>('/api/portfolios', fetcher)
+  const { data: companies } = useSWR<Company[]>('/api/companies', fetcher)
   const { data: posts } = useSWR<Post[]>('/api/posts', fetcher)
-  const { headline, about } = ABOUT
+  const { data: socialLinks } = useSWR<SocialLink[]>(
+    '/api/social-links',
+    fetcher
+  )
 
+  console.log(about)
   return (
     <motion.main
       className="space-y-24"
@@ -142,82 +147,119 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
+      {/* About */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
           <p>
-            {headline}
-            <br></br>
-            <br></br>
-            {about}
+            {about?.bio?.html && (
+              <>
+                <span dangerouslySetInnerHTML={{ __html: about.bio.html }} />
+              </>
+            )}
           </p>
         </div>
       </motion.section>
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
-              </div>
-              <div className="px-1">
-                <a
-                  className="relative inline-block"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full dark:bg-zinc-50"></span>
-                </a>
-                <p className="text-muted-foreground">{project.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-        <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
-            <a
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={job.id}
-            >
-              <Spotlight
-                className="bg-zinc-950 from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:bg-zinc-50 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
-              />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-muted-foreground">{job.company}</p>
-                  </div>
-                  <p className="text-muted-foreground">
-                    {job.start} - {job.end}
-                  </p>
+      {/* Portfolio */}
+      {portfolios && portfolios.length > 0 && (
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Selected Work</h3>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {portfolios.slice(0, 4).map((item) => (
+              <div key={item.slug} className="space-y-2">
+                <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                  {item.thumbnail ? (
+                    <PortfolioImage
+                      src={item.thumbnail.url}
+                      alt={item.title}
+                      width={item.thumbnail.width ?? 800}
+                      height={item.thumbnail.height ?? 450}
+                    />
+                  ) : (
+                    <div className="aspect-video w-full rounded-xl bg-zinc-100 dark:bg-zinc-900" />
+                  )}
+                </div>
+                <div className="px-1">
+                  <Link
+                    className="relative inline-block font-medium"
+                    href={`/work/${item.slug}`}
+                  >
+                    {item.title}
+                  </Link>
+                  {item.role && (
+                    <p className="text-muted-foreground">{item.role}</p>
+                  )}
                 </div>
               </div>
-            </a>
-          ))}
-        </div>
-      </motion.section>
+            ))}
+          </div>
+          <div className="flex w-full justify-end">
+            <Link href="/work">
+              <Button variant="ghost" className="mt-2 gap-1">
+                View All <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </motion.section>
+      )}
 
+      {/* Work Experience */}
+      {companies && companies.length > 0 && (
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
+          <div className="flex flex-col space-y-2">
+            {companies.map((company) => {
+              const latestRole = company.roles?.[0]
+              return (
+                <Link
+                  className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
+                  href={`/work-experience/${company.slug}`}
+                  key={company.id}
+                >
+                  <Spotlight
+                    className="bg-zinc-950 from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:bg-zinc-50 dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
+                    size={64}
+                  />
+                  <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
+                    <div className="relative flex w-full flex-row justify-between">
+                      <div>
+                        <h4 className="font-normal dark:text-zinc-100">
+                          {latestRole?.title}
+                        </h4>
+                        <p className="text-muted-foreground">{company.name}</p>
+                      </div>
+                      {latestRole && (
+                        <p className="text-muted-foreground">
+                          {formatWorkDate(latestRole.startDate)} -{' '}
+                          {latestRole.endDate ? formatWorkDate(latestRole.endDate) : 'Present'}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+          <div className="flex w-full justify-end">
+            <Link href="/work-experience">
+              <Button variant="ghost" className="mt-2 gap-1">
+                View All <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </motion.section>
+      )}
+
+      {/* Blog */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
@@ -259,19 +301,22 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
-      </motion.section>
+      {/* Social Links */}
+      {socialLinks && socialLinks.length > 0 && (
+        <motion.section
+          variants={VARIANTS_SECTION}
+          transition={TRANSITION_SECTION}
+        >
+          <h3 className="mb-5 text-lg font-medium">Let's Connect</h3>
+          <div className="flex items-center justify-start space-x-3">
+            {socialLinks.map((link) => (
+              <MagneticSocialLink key={link.id} link={link.url}>
+                {link.label}
+              </MagneticSocialLink>
+            ))}
+          </div>
+        </motion.section>
+      )}
     </motion.main>
   )
 }
