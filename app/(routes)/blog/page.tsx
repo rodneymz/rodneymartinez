@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { getPosts } from 'api/shared/functions'
 import { formatDate } from 'utils'
 
+import { AppBreadcrumb } from 'custom/breadcrumb'
+
 import type { PostsResponse } from 'api/types'
 
 const blogPosts = [
@@ -31,7 +33,8 @@ export default async function BlogIndex() {
     return (
       <div className="container mx-auto">
         <div className="mx-auto max-w-4xl">
-          <h1 className="mb-8 text-4xl font-bold">Blog</h1>
+          <AppBreadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Blog' }]} />
+          <h1 className="mb-8 mt-4 text-4xl font-bold">Blog</h1>
           <div className="space-y-8">
             {posts.map((post) => (
               <article

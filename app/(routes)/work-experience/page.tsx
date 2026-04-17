@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { getCompanies } from 'api/shared/functions'
+import { AppBreadcrumb } from 'custom/breadcrumb'
 
 import type { CompaniesResponse } from 'api/types'
 
@@ -23,7 +24,8 @@ export default async function WorkExperienceIndex() {
     return (
       <div className="container mx-auto">
         <div className="mx-auto max-w-4xl">
-          <h1 className="mb-8 text-4xl font-bold">Work Experience</h1>
+          <AppBreadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Work Experience' }]} />
+          <h1 className="mb-8 mt-4 text-4xl font-bold">Work Experience</h1>
           <div className="space-y-8">
             {companies.map((company) => {
               const latestRole = company.roles?.[0]

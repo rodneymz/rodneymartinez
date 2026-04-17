@@ -12,9 +12,12 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export function Header() {
   const { data: about } = useSWR<About>('/api/about', fetcher)
-  const { data: socialLinks } = useSWR<SocialLink[]>('/api/social-links', fetcher)
+  const { data: socialLinks } = useSWR<SocialLink[]>(
+    '/api/social-links',
+    fetcher
+  )
 
-  const emailLink = socialLinks?.find((l) => l.icon === 'EMAIL')
+  const emailLink = socialLinks?.find((l) => l.label.toUpperCase() === 'EMAIL')
 
   return (
     <header className="mb-24 flex items-center justify-between">

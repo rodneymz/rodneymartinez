@@ -2,10 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { ArrowLeft } from 'lucide-react'
 import { formatWorkDate } from 'utils'
 
-import { Button } from '@/components/ui/button'
+import { AppBreadcrumb } from 'custom/breadcrumb'
+import { PostNavigation } from 'custom/post-navigation'
 import { getCompanies, getCompany } from 'api/shared/functions'
 
 import type { CompanyResponse } from 'api/types'
@@ -20,20 +20,20 @@ export default async function WorkExperiencePost({ params }: WorkExperiencePostP
   const { slug } = await params
 
   try {
-    const company: CompanyResponse['company'] = await getCompany(slug)
+    const [company, allCompanies]: [CompanyResponse['company'], Awaited<ReturnType<typeof getCompanies>>] =
+      await Promise.all([getCompany(slug), getCompanies({ first: 100 })])
 
     if (!company) {
       notFound()
     }
 
+    const currentIndex = allCompanies.findIndex((c) => c.slug === slug)
+    const prev = allCompanies[currentIndex - 1]
+    const next = allCompanies[currentIndex + 1]
+
     return (
       <div className="container mx-auto space-y-6">
-        <Link href="/work-experience" className="block">
-          <Button variant="ghost" className="-ml-3">
-            <ArrowLeft />
-            Work Experience
-          </Button>
-        </Link>
+        <AppBreadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Work Experience', href: '/work-experience' }, { label: company.name }]} />
         <article className="mx-auto max-w-4xl space-y-10">
           <header className="flex items-start gap-6">
             {company.logo && (
@@ -104,6 +104,10 @@ export default async function WorkExperiencePost({ params }: WorkExperiencePostP
             </section>
           )}
         </article>
+        <PostNavigation
+          prev={prev ? { label: prev.name, href: `/work-experience/${prev.slug}` } : undefined}
+          next={next ? { label: next.name, href: `/work-experience/${next.slug}` } : undefined}
+        />
       </div>
     )
   } catch (error) {

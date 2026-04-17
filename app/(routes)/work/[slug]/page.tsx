@@ -2,9 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { ArrowLeft } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
+import { AppBreadcrumb } from 'custom/breadcrumb'
+import { PostNavigation } from 'custom/post-navigation'
 import { getPortfolio, getPortfolios } from 'api/shared/functions'
 
 
@@ -18,20 +17,22 @@ export default async function WorkPost({ params }: WorkPostProps) {
   const { slug } = await params
 
   try {
-    const portfolio = await getPortfolio(slug)
+    const [portfolio, allPortfolios] = await Promise.all([
+      getPortfolio(slug),
+      getPortfolios({ first: 100 }),
+    ])
 
     if (!portfolio) {
       notFound()
     }
 
+    const currentIndex = allPortfolios.findIndex((p) => p.slug === slug)
+    const prev = allPortfolios[currentIndex - 1]
+    const next = allPortfolios[currentIndex + 1]
+
     return (
       <div className="container mx-auto space-y-6">
-        <Link href="/work" className="block">
-          <Button variant="ghost" className="-ml-3">
-            <ArrowLeft />
-            Work
-          </Button>
-        </Link>
+        <AppBreadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Work', href: '/work' }, { label: portfolio.title }]} />
         <article className="mx-auto max-w-4xl space-y-8">
           <header className="space-y-2">
             <h1 className="text-4xl font-bold">{portfolio.title}</h1>
@@ -69,6 +70,10 @@ export default async function WorkPost({ params }: WorkPostProps) {
             />
           )}
         </article>
+        <PostNavigation
+          prev={prev ? { label: prev.title, href: `/work/${prev.slug}` } : undefined}
+          next={next ? { label: next.title, href: `/work/${next.slug}` } : undefined}
+        />
       </div>
     )
   } catch (error) {

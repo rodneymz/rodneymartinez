@@ -156,7 +156,10 @@ export default function Personal() {
           <p>
             {about?.bio?.html && (
               <>
-                <span dangerouslySetInnerHTML={{ __html: about.bio.html }} />
+                <span
+                  className="flex flex-col gap-3"
+                  dangerouslySetInnerHTML={{ __html: about.bio.html }}
+                />
               </>
             )}
           </p>
@@ -240,7 +243,9 @@ export default function Personal() {
                       {latestRole && (
                         <p className="text-muted-foreground">
                           {formatWorkDate(latestRole.startDate)} -{' '}
-                          {latestRole.endDate ? formatWorkDate(latestRole.endDate) : 'Present'}
+                          {latestRole.endDate
+                            ? formatWorkDate(latestRole.endDate)
+                            : 'Present'}
                         </p>
                       )}
                     </div>
